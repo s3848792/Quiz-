@@ -4,38 +4,48 @@
     <%=@asking.question%>
 </h2>
 
-
-<%if @asking.answer_a != nil%>
-    <input type="radio" id="A" name="gender" value="A">
+<form>
+<div class="form_row">
+    <%if @asking.answer_a != nil%>
+    <input type="radio" id="A" name="selected_answer" value=<%=@asking.answer_a%>>
     <label for="A"><%=@asking.answer_a%></label><br>
+    <%end%>
+    
+    <%if @asking.answer_b != nil%>
+    <input type="radio" id="B" name="selected_answer" value=<%=@asking.answer_b%>>
+    <label for="B"><%=@asking.answer_b%></label><br>
+    <%end%>
+    
+    
+    <%if @asking.answer_c != nil%>
+    <input type="radio" id="C" name="selected_answer" value=<%=@asking.answer_c%>>
+    <label for="C"><%=@asking.answer_c%></label><br>
+    <%end%>
+    
+    
+    <%if @asking.answer_d != nil%>
+    <input type="radio" id="D" name="selected_answer" value=<%=@asking.answer_d%>>
+    <label for="D"><%=@asking.answer_d%></label><br>
+    <%end%>
+    
+    
+    <%if @asking.answer_e != nil%>
+    <input type="radio" id="E" name="selected_answer" value=<%=@asking.answer_e%>>
+    <label for="E"><%=@asking.answer_e%></label><br>
+    <%end%>
+    
+    <%if @asking.answer_f != nil%>
+    <input type="radio" id="F" name="selected_answer" value=<%=@asking.answer_f%>>
+    <label for="F"><%=@asking.answer_f%></label><br>
+    <%end%>
+</div>
+
+
+
+<%if Asking.sum("answered")>3%>
+    <p><%= link_to "Finish", results_url, class: "btnbtn-lg btn-primary" %></p>
+<%else%>
+    <p><%= link_to "Answer", random_url, class: "btnbtn-lg btn-primary" %></p>
 <%end%>
 
-<%if @asking.answer_b != nil%>
-<input type="radio" id="B" name="gender" value="B">
-<label for="B"><%=@asking.answer_b%></label><br>
-<%end%>
-
-<%if @asking.answer_c != nil%>
-<input type="radio" id="C" name="gender" value="C">
-<label for="C"><%=@asking.answer_c%></label><br>
-<%end%>
-
-<%if @asking.answer_d != nil%>
-<input type="radio" id="D" name="gender" value="D">
-<label for="D"><%=@asking.answer_d%></label><br>
-<%end%>
-
-<%if @asking.answer_e != nil%>
-<input type="radio" id="E" name="gender" value="E">
-<label for="E"><%=@asking.answer_e%></label><br>
-<%end%>
-
-<%if @asking.answer_f != nil%>
-<input type="radio" id="F" name="gender" value="F">
-<label for="F"><%=@asking.answer_f%></label><br>
-<%end%>
-
-
-
-<%= link_to 'Edit', edit_asking_path(@asking) %> |
-<%= link_to 'Back', askings_path %>
+</form>

@@ -59,7 +59,24 @@ class AskingsController < ApplicationController
   def random
     offset = rand(10)
     @question = Asking.offset(offset).first
+    @question.answered = 1
+    @question.save
     redirect_to @question
+  end
+  
+  def results
+    Asking.all.each do |q|
+      q.high_score = 4
+      q.save
+    end
+  end
+  
+  def reset
+    Asking.all.each do |q|
+      q.answered = 0
+      q.save
+    end
+    redirect_to random_url
   end
 
   private
