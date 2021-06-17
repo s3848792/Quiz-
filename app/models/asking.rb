@@ -1,0 +1,5 @@
+class Asking < ApplicationRecord
+    
+    
+    
+end

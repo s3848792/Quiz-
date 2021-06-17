@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+
+<%if @asking.answer_a != ""%>
+    <input type="radio" id="A" name="gender" value="A">
+    <%=@asking.answer_a%>
+    <label for="A"><%=@asking.answer_a%></label><br>
+<%end%>
+
+<%if @asking.answer_b != ""%>
+<input type="radio" id="B" name="gender" value="B">
+<%=@asking.answer_b%>
+<label for="B">B</label><br>
+<%end%>
+
+<%if @asking.answer_c != ""%>
+<input type="radio" id="C" name="gender" value="C">
+<%=@asking.answer_c%>
+<label for="C">C</label><br>
+<%end%>
+
+<%if @asking.answer_d != ""%>
+<input type="radio" id="D" name="gender" value="D">
+<%=@asking.answer_d%>
+<label for="D">D</label><br>
+<%end%>
+
+<%if @asking.answer_e != ""%>
+<input type="radio" id="E" name="gender" value="E">
+<%=@asking.answer_e%>
+<label for="E">E</label><br>
+<%end%>
+
+<%if @asking.answer_f != ""%>
+<input type="radio" id="F" name="gender" value="F">
+<%=@asking.answer_f%>
+<label for="F">F</label><br>
+<%end%>
+
+
+
+<%= link_to 'Edit', edit_asking_path(@asking) %> |
+<%= link_to 'Back', askings_path %>

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Askings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Question</th>
+      <th>Description</th>
+      <th>Multiple correct answers</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @askings.each do |asking| %>
+      <tr>
+        <td><%= asking.question %></td>
+        <td><%= asking.description %></td>
+        <td><%= asking.multiple_correct_answers %></td>
+        <td><%= link_to 'Show', asking %></td>
+        <td><%= link_to 'Edit', edit_asking_path(asking) %></td>
+        <td><%= link_to 'Destroy', asking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Asking', new_asking_path %>

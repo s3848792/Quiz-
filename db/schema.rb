@@ -10,21 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210616234856) do
+ActiveRecord::Schema.define(version: 20210617043418) do
 
-  create_table "questions", force: :cascade do |t|
+  create_table "askings", force: :cascade do |t|
     t.string   "question"
     t.string   "description"
+    t.string   "multiple_correct_answers"
+    t.string   "correct_answers"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.string   "correct_answer"
+    t.string   "explanation"
+    t.string   "category"
+    t.string   "tip"
+    t.string   "difficulty"
+    t.string   "tags"
     t.string   "answer_a"
     t.string   "answer_b"
     t.string   "answer_c"
     t.string   "answer_d"
     t.string   "answer_e"
     t.string   "answer_f"
-    t.string   "correctanswer"
-    t.string   "explanation"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.string   "answer_a_correct"
+    t.string   "answer_b_correct"
+    t.string   "answer_c_correct"
+    t.string   "answer_d_correct"
+    t.string   "answer_e_correct"
+    t.string   "answer_f_correct"
   end
 
 end

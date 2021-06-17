@@ -6,13 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-    Question.create(question: "What is the login name of the administrator in Linux?", answer_a: "root", answer_b: "administrator", answer_c: "admin", answer_d: "All of the mentioned", answer_e: "None of the mentioned", correctanswer: "root")
-    Question.create(question: "How to delete a pod in Kubernetes using the type and name specified in pod.json?", answer_a: "kubectl delete .\/pod.json", answer_b: "kubectl delete -f .\/pod.json", answer_c: "kubectl remove -f .\/pod.json", answer_d: "kubectl remove .\/pod.json", correctanswer: "kubectl delete -f .\/pod.json")
-    Question.create(question: "Which of the following command can give documentation of a command?", answer_a: "man", answer_b: "info", answer_c: "doc", answer_d: "show", answer_e: "help", correctanswer: "man")
-    Question.create(question: "Deployment Controllers are part of", answer_a: "Master Controller Manager", answer_b: "kube-scheduler", answer_c: "etcd manager", answer_d: "API Controller Manager", correctanswer: "Master Controller Manager", explanation: "A Deployment provides declarative updates for Pods and ReplicaSets.You describe a desired state in a Deployment, and the Deployment Controller changes the actual state to the desired state at a controlled rate. You can define Deployments to create new ReplicaSets, or to remove existing Deployments and adopt all their resources with new Deployments.")
-    Question.create(question: "How do we change permissions on files", answer_a: "chown", answer_b: "chmod", answer_c: "chattr", answer_d: "lsattr", answer_e: "We Can't change them", correctanswer: "chmod")
-    Question.create(question: "Which command to use for complete details of a command on the shell?", answer_a: "help", answer_b: "man", answer_c: "?", answer_d: "info", correctanswer: "man")
-    Question.create(question: "Which command can be used to change file access permission bits?", answer_a: "chmod", answer_b: "chown", answer_c: "umask", answer_d: "chperm", correctanswer: "chmod")
-    Question.create(question: "HTML supports", answer_a: "ordered lists", answer_b: "unordered lists", answer_c: "both type of lists", answer_d: "does not support those types", correctanswer: "both type of lists")
-    Question.create(question: "From which file does the command `free` takes it's information", answer_a: "\/proc\/meminfo", answer_b: "\/proc\/freemem", answer_c: "\/proc\/memfree", answer_d: "\/dev\/meminfo", answer_e: "\/dev\/freemem", answer_f: "\/dev\/memfree", correctanswer: "\/proc\/meminfo")
-    Question.create(question: "Which command is used to create new directory?", answer_a: "dir", answer_b: "newdir", answer_c: "mkdir", answer_d: "cdir", correctanswer: "mkdir")
+file = File.read('quiz.json')
+data_hash = JSON.parse(file)
+data_hash.each do |q|
+  Asking.create(id: q['id'], question: q['question'], description: q['description'], multiple_correct_answers: q['multiple_correct_answers'], correct_answer: q['correct_answer'], explanation: q['explanation'], category: q['category'], tip: q['tip'], difficulty: q['difficulty'], answer_a: q['answers']['answer_a'], answer_b: q['answers']['answer_b'], answer_c: q['answers']['answer_c'], answer_d: q['answers']['answer_d'], answer_e: q['answers']['answer_e'], answer_f: q['answers']['answer_f'], answer_a_correct: q['correct_answers']['answer_a_correct'], answer_b_correct: q['correct_answers']['answer_b_correct'], answer_c_correct: q['correct_answers']['answer_c_correct'], answer_d_correct: q['correct_answers']['answer_d_correct'], answer_e_correct: q['correct_answers']['answer_e_correct'], answer_f_correct: q['correct_answers']['answer_f_correct'])
+end
