@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20210617072206) do
     t.string   "answer_e_correct"
     t.string   "answer_f_correct"
     t.integer  "answered"
-    t.string   "selected_answer"
+    t.string   "selectedanswer"
     t.integer  "high_score"
   end
 

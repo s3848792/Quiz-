@@ -1,42 +1,45 @@
+skip_before_action :verify_authenticity_token
+
 <p id="notice"><%= notice %></p>
 
 <h2>
     <%=@asking.question%>
 </h2>
 
-<form>
+<%= form_for(@asking) do |f| %>
+  
 <div class="form_row">
     <%if @asking.answer_a != nil%>
-    <input type="radio" id="A" name="selected_answer" value=<%=@asking.answer_a%>>
-    <label for="A"><%=@asking.answer_a%></label><br>
+    <%= f.radio_button :selectedanswer, @asking.answer_a %>
+    <%= f.label :selectedanswer, @asking.answer_a %>
     <%end%>
     
     <%if @asking.answer_b != nil%>
-    <input type="radio" id="B" name="selected_answer" value=<%=@asking.answer_b%>>
-    <label for="B"><%=@asking.answer_b%></label><br>
+    <%= f.radio_button :selectedanswer, @asking.answer_b %>
+    <%= f.label :selectedanswer, @asking.answer_b %>
     <%end%>
     
     
     <%if @asking.answer_c != nil%>
-    <input type="radio" id="C" name="selected_answer" value=<%=@asking.answer_c%>>
-    <label for="C"><%=@asking.answer_c%></label><br>
+    <%= f.radio_button :selectedanswer, @asking.answer_c %>
+    <%= f.label :selectedanswer, @asking.answer_c %>
     <%end%>
     
     
     <%if @asking.answer_d != nil%>
-    <input type="radio" id="D" name="selected_answer" value=<%=@asking.answer_d%>>
-    <label for="D"><%=@asking.answer_d%></label><br>
+    <%= f.radio_button :selectedanswer, @asking.answer_d %>
+    <%= f.label :selectedanswer, @asking.answer_d %>
     <%end%>
     
     
     <%if @asking.answer_e != nil%>
-    <input type="radio" id="E" name="selected_answer" value=<%=@asking.answer_e%>>
-    <label for="E"><%=@asking.answer_e%></label><br>
+    <%= f.radio_button :selectedanswer, @asking.answer_e %>
+    <%= f.label :selectedanswer, @asking.answer_e %>
     <%end%>
     
     <%if @asking.answer_f != nil%>
-    <input type="radio" id="F" name="selected_answer" value=<%=@asking.answer_f%>>
-    <label for="F"><%=@asking.answer_f%></label><br>
+    <%= f.radio_button :selectedanswer, @asking.answer_f %>
+    <%= f.label :selectedanswer, @asking.answer_f %>
     <%end%>
 </div>
 
@@ -45,7 +48,9 @@
 <%if Asking.sum("answered")>3%>
     <p><%= link_to "Finish", results_url, class: "btnbtn-lg btn-primary" %></p>
 <%else%>
-    <p><%= link_to "Answer", random_url, class: "btnbtn-lg btn-primary" %></p>
+      <div class="actions">
+    <%= f.submit %>
+  </div>
 <%end%>
 
-</form>
+<% end %>

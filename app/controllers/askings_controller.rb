@@ -38,7 +38,7 @@ class AskingsController < ApplicationController
   def update
     respond_to do |format|
       if @asking.update(asking_params)
-        format.html { redirect_to @asking, notice: "Asking was successfully updated." }
+        format.html { redirect_to random_url}
         format.json { render :show, status: :ok, location: @asking }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -65,15 +65,44 @@ class AskingsController < ApplicationController
   end
   
   def results
-    Asking.all.each do |q|
-      q.high_score = 4
-      q.save
+    Asking.where("selectedanswer != 'nil'").each do |q|
+      if q.answer_a_correct == "true"
+        if q.answer_a == q.selectedanswer
+          puts "hello1"
+        end
+      end
+      if q.answer_b_correct == "true"
+        if q.answer_b == q.selectedanswer
+          puts "hello2"
+        end
+      end
+      if q.answer_c_correct == "true"
+        if q.answer_c == q.selectedanswer
+          puts "hello3"
+        end
+      end
+      if q.answer_d_correct == "true"
+        if q.answer_d == q.selectedanswer
+          puts "hello4"
+        end
+      end
+      if q.answer_e_correct == "true"
+        if q.answer_e === q.selectedanswer
+          puts "hello5"
+        end
+      end
+      if q.answer_f_correct == "true"
+        if q.answer_f == q.selectedanswer
+          puts "hello6"
+        end
+      end
     end
   end
   
   def reset
     Asking.all.each do |q|
       q.answered = 0
+      q.selectedanswer = nil
       q.save
     end
     redirect_to random_url
@@ -87,6 +116,6 @@ class AskingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def asking_params
-      params.require(:asking).permit(:question, :description, :answers, :multiple_correct_answers, :correct_answers)
+      params.require(:asking).permit(:question, :description, :answers, :multiple_correct_answers, :correct_answers, :selectedanswer)
     end
 end
