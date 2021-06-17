@@ -121,7 +121,7 @@ class AskingsController < ApplicationController
         q.save
      end
     end
-   Record.create(numberCorrect: x, attemptsAgo: 0)
+   Record.create(numberCorrect: x, attemptsago: 0)
   end
   
   def reset
@@ -132,7 +132,7 @@ class AskingsController < ApplicationController
       q.save
     end
     Record.all.each do |r|
-      r.attemptsAgo = r.attemptsAgo+1
+      r.attemptsago = r.attemptsago+1
       r.save
     end
     redirect_to random_url

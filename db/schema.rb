@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20210617105534) do
 
   create_table "records", force: :cascade do |t|
     t.integer  "numberCorrect"
-    t.integer  "attemptsAgo"
+    t.integer  "attemptsago"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end

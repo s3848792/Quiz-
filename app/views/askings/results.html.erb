@@ -4,9 +4,9 @@
     <h1>You Scored:</h1>
     <h2><%=@score = Asking.sum("score")%></h2>
     <h2>out of 4</h2>
-    <% x = Record.where("attemptsAgo > '0'")%>
-    <% x.where("attemptsAgo < '6'").each do |q|%>
-    <h3><%=q.attemptsAgo%> attempt(s) ago, you scored <%=q.numberCorrect%></h3>
+    <% x = Record.where("attemptsago > '0'")%>
+    <% x.where("attemptsago < '6'").each do |q|%>
+    <h3><%=q.attemptsago%> attempt(s) ago, you scored <%=q.numberCorrect%></h3>
     <%end%>
     <p><%= link_to "Lets go!", reset_url, class: "btnbtn-lg btn-primary" %></p>
   </div>
