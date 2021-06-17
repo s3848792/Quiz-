@@ -3,8 +3,6 @@ class CreateQuestions < ActiveRecord::Migration[5.0]
     create_table :questions do |t|
       t.string :question
       t.string :description
-      t.string :answer_a_cotion
-      t.string :description
       t.string :answer_a
       t.string :answer_b
       t.string :answer_c

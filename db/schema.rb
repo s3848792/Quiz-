@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(version: 20210616234856) do
   create_table "questions", force: :cascade do |t|
     t.string   "question"
     t.string   "description"
-    t.string   "answer_a_cotion"
     t.string   "answer_a"
     t.string   "answer_b"
     t.string   "answer_c"
@@ -24,8 +23,8 @@ ActiveRecord::Schema.define(version: 20210616234856) do
     t.string   "answer_f"
     t.string   "correctanswer"
     t.string   "explanation"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
 end
