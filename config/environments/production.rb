@@ -85,6 +85,6 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   
     
-  QUIZ_KEY = '5qr0mG3wjPnSfCZRWTu7SjCElNRhtmk2Vt6o2SIB'
+  QUIZ_KEY = 'VBWsJNtOO0sxgicTaM4SPqaeXThKAYZ5WM9xiWpf'
   
 end

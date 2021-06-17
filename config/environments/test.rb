@@ -40,6 +40,6 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
     
-  QUIZ_KEY = '5qr0mG3wjPnSfCZRWTu7SjCElNRhtmk2Vt6o2SIB'
+  QUIZ_KEY = 'VBWsJNtOO0sxgicTaM4SPqaeXThKAYZ5WM9xiWpf'
   
 end

@@ -52,6 +52,6 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   
-  QUIZ_KEY = '5qr0mG3wjPnSfCZRWTu7SjCElNRhtmk2Vt6o2SIB'
+  QUIZ_KEY = 'VBWsJNtOO0sxgicTaM4SPqaeXThKAYZ5WM9xiWpf'
   
 end
