@@ -4,12 +4,11 @@
 <h2>
     <%=@asking.question%>
 </h2>
-
 <%= form_for(@asking) do |f| %>
   
 <div class="form_row">
     <%if @asking.answer_a != nil%>
-    <%= f.radio_button :selectedanswer, @asking.answer_a %>
+    <%= f.radio_button :selectedanswer, @asking.answer_a, checked: true %>
     <%= f.label :selectedanswer, @asking.answer_a %>
     <%end%>
     

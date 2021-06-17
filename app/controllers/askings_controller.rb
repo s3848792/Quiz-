@@ -81,7 +81,7 @@ class AskingsController < ApplicationController
   end
   
   def results
-    Asking.where("selectedanswer != 'nil'").each do |q|
+    Asking.where("answered == '1'").each do |q|
       if q.answer_a_correct == "true"
         if q.answer_a == q.selectedanswer
           q.score = 1
@@ -120,7 +120,7 @@ class AskingsController < ApplicationController
         q.high_score = x
         q.save
      end
-   end
+    end
    Record.create(numberCorrect: x, attemptsAgo: 0)
   end
   

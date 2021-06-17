@@ -1,4 +1,3 @@
 class Asking < ApplicationRecord
-
     
 end
