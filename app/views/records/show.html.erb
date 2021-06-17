@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Numbercorrect:</strong>
+  <%= @record.numberCorrect %>
+</p>
+
+<p>
+  <strong>Attemptsago:</strong>
+  <%= @record.attemptsAgo %>
+</p>
+
+<%= link_to 'Edit', edit_record_path(@record) %> |
+<%= link_to 'Back', records_path %>

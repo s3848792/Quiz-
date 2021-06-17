@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :records
   resources :askings
   get 'static_pages/home'
   get 'static_pages/results'

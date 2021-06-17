@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210617072206) do
+ActiveRecord::Schema.define(version: 20210617105534) do
 
   create_table "askings", force: :cascade do |t|
     t.string   "question"
@@ -40,6 +40,14 @@ ActiveRecord::Schema.define(version: 20210617072206) do
     t.integer  "answered"
     t.string   "selectedanswer"
     t.integer  "high_score"
+    t.integer  "score"
+  end
+
+  create_table "records", force: :cascade do |t|
+    t.integer  "numberCorrect"
+    t.integer  "attemptsAgo"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
 end

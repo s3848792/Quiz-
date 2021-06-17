@@ -1,9 +1,12 @@
 <%provide(:title,"Results")%>
 <div class="container">
   <div class="center jumbotron">
-      
     <h1>You Scored:</h1>
-    <h2><%=@score = Asking.sum("answered")%></h2>
+    <h2><%=@score = Asking.sum("score")%></h2>
     <h2>out of 4</h2>
-        <p><%= link_to "Lets go!", reset_url, class: "btnbtn-lg btn-primary" %></p>
+    <% x = Record.where("attemptsAgo > '0'")%>
+    <% x.where("attemptsAgo < '6'").each do |q|%>
+    <h3><%=q.attemptsAgo%> attempt(s) ago, you scored <%=q.numberCorrect%></h3>
+    <%end%>
+    <p><%= link_to "Lets go!", reset_url, class: "btnbtn-lg btn-primary" %></p>
   </div>

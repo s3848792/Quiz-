@@ -36,13 +36,25 @@ class AskingsController < ApplicationController
 
   # PATCH/PUT /askings/1 or /askings/1.json
   def update
-    respond_to do |format|
-      if @asking.update(asking_params)
-        format.html { redirect_to random_url}
-        format.json { render :show, status: :ok, location: @asking }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @asking.errors, status: :unprocessable_entity }
+    if Asking.sum("answered") <4
+      respond_to do |format|
+        if @asking.update(asking_params)
+          format.html { redirect_to random_url}
+          format.json { render :show, status: :ok, location: @asking }
+        else
+          format.html { render :edit, status: :unprocessable_entity }
+          format.json { render json: @asking.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      respond_to do |format|
+        if @asking.update(asking_params)
+          format.html { redirect_to results_url}
+          format.json { render :show, status: :ok, location: @asking }
+        else
+          format.html { render :edit, status: :unprocessable_entity }
+          format.json { render json: @asking.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -59,51 +71,69 @@ class AskingsController < ApplicationController
   def random
     offset = rand(10)
     @question = Asking.offset(offset).first
+    if @question.answered == 1
+      redirect_to random_url
+    else
     @question.answered = 1
     @question.save
     redirect_to @question
+    end
   end
   
   def results
     Asking.where("selectedanswer != 'nil'").each do |q|
       if q.answer_a_correct == "true"
         if q.answer_a == q.selectedanswer
-          puts "hello1"
+          q.score = 1
         end
       end
       if q.answer_b_correct == "true"
         if q.answer_b == q.selectedanswer
-          puts "hello2"
+          q.score = 1
         end
       end
       if q.answer_c_correct == "true"
         if q.answer_c == q.selectedanswer
-          puts "hello3"
+          q.score = 1
         end
       end
       if q.answer_d_correct == "true"
         if q.answer_d == q.selectedanswer
-          puts "hello4"
+          q.score = 1
         end
       end
       if q.answer_e_correct == "true"
         if q.answer_e === q.selectedanswer
-          puts "hello5"
+          q.score = 1
         end
       end
       if q.answer_f_correct == "true"
         if q.answer_f == q.selectedanswer
-          puts "hello6"
+          q.score = 1
         end
       end
+      q.save
     end
+    x = Asking.sum("score")
+    if x > Asking.first.high_score
+      Asking.all.each do |q|
+        q.high_score = x
+        q.save
+     end
+   end
+   Record.create(numberCorrect: x, attemptsAgo: 0)
   end
   
   def reset
     Asking.all.each do |q|
       q.answered = 0
       q.selectedanswer = nil
+      q.score = 0
       q.save
+    end
+    Record.all.each do |r|
+      r.attemptsAgo = r.attemptsAgo+1
+      r.save
     end
     redirect_to random_url
   end
